@@ -1,6 +1,6 @@
 package phasex.projects.plataformadedenuncias.beans;
 
-public enum reportTypes {
+public enum ReportTypes {
     TRABALHISTA,
     PUBLICA,
     CRIMINAL,
