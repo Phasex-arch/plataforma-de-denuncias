@@ -14,6 +14,7 @@ public class DenunciasController {
     @PostMapping
     public ResponseEntity<?> postarDenuncia(@RequestBody DenunciaRequestDto denuncia) {
         return null;
+
     }
 
 
