@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -15,7 +16,7 @@ import java.util.UUID;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ReportBean{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private UUID id;
 
@@ -27,11 +28,15 @@ public class ReportBean{
     private String conteudoCriptografado;
 
     @Column(nullable = false)
-    private String hashVerificacao;
-
-    @Column(nullable = false)
-    private Timestamp dataCriacao;
+    private LocalDateTime dataCriacao;
 
     @Column(nullable = false)
     private boolean investigada = false;
+
+    public ReportBean(ReportTypes tipo, String conteudoCriptografado) {
+        this.tipo = tipo;
+        this.conteudoCriptografado = conteudoCriptografado;
+        this.dataCriacao = LocalDateTime.now();
+    }
+
 }

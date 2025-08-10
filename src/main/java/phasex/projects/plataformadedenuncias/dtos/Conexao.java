@@ -12,7 +12,7 @@ public class Conexao {
             String usuario = dotenv.get("DB_USER");
             String senha = dotenv.get("DB_PASSWORD");
             Connection conexao = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/plataforma_denuncia",
+                    "jdbc:postgresql://localhost:5432/denunciadb-container",
                     usuario,
                     senha
             );

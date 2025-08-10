@@ -1,14 +1,16 @@
 package phasex.projects.plataformadedenuncias.dtos;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import phasex.projects.plataformadedenuncias.beans.ReportTypes;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @AllArgsConstructor
-public class DenunciaRequestDto {
-    private ReportTypes reportType;
-    private String conteudoCriptografado;
+public class DenunciaResponseDTO {
+    private UUID id;
 }
