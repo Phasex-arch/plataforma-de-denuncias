@@ -21,16 +21,12 @@ public class ReportBean{
     private UUID id;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private ReportTypes tipo;
 
-    @Column(nullable = false)
     private String conteudoCriptografado;
 
-    @Column(nullable = false)
     private LocalDateTime dataCriacao;
 
-    @Column(nullable = false)
     private boolean investigada = false;
 
     public ReportBean(ReportTypes tipo, String conteudoCriptografado) {
