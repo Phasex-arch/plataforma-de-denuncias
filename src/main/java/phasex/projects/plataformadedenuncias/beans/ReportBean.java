@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "denuncia")
+@Table(name = "report")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,22 +16,22 @@ import java.util.UUID;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ReportBean{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @EqualsAndHashCode.Include
-    private UUID id;
+    private Integer id;
 
     @Enumerated(EnumType.STRING)
     private ReportTypes tipo;
 
-    private String conteudoCriptografado;
+    private String descricao;
 
     private LocalDateTime dataCriacao;
 
-    private boolean investigada = false;
+    private UUID token_denuncia;
 
     public ReportBean(ReportTypes tipo, String conteudoCriptografado) {
         this.tipo = tipo;
-        this.conteudoCriptografado = conteudoCriptografado;
+        this.descricao = conteudoCriptografado;
         this.dataCriacao = LocalDateTime.now();
     }
 

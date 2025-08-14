@@ -10,5 +10,5 @@ import phasex.projects.plataformadedenuncias.beans.ReportTypes;
 @AllArgsConstructor
 public class DenunciaRequestDto {
     private ReportTypes reportType;
-    private String conteudoCriptografado;
+    private String descricao;
 }

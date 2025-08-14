@@ -8,6 +8,6 @@ import phasex.projects.plataformadedenuncias.beans.ReportBean;
 import java.util.UUID;
 
 @Repository
-public interface ReportRepo extends JpaRepository<ReportBean, UUID> {
+public interface ReportRepo extends JpaRepository<ReportBean, Integer> {
 
 }

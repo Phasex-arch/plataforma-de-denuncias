@@ -12,5 +12,5 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 public class DenunciaResponseDTO {
-    private UUID id;
+    private Integer id;
 }

@@ -1,9 +1,7 @@
 package phasex.projects.plataformadedenuncias.services;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Service;
 import phasex.projects.plataformadedenuncias.beans.ReportBean;
 import phasex.projects.plataformadedenuncias.dtos.DenunciaRequestDto;
@@ -23,7 +21,7 @@ public class DenunciaService {
     }
 
     public DenunciaResponseDTO save(DenunciaRequestDto denunciaDto) {
-        ReportBean reportBean = new ReportBean(denunciaDto.getReportType(),denunciaDto.getConteudoCriptografado());
+        ReportBean reportBean = new ReportBean(denunciaDto.getReportType(),denunciaDto.getDescricao());
         reportRepo.save(reportBean);
         return new DenunciaResponseDTO(reportBean.getId());
     }
@@ -32,11 +30,11 @@ public class DenunciaService {
         return reportRepo.findAll();
     }
 
-    public ReportBean findById(UUID id) {
+    public ReportBean findById(Integer id) {
         return reportRepo.findById(id).orElse(null);
     }
 
-    public void delete(UUID id) {
+    public void delete(Integer id) {
         reportRepo.deleteById(id);
     }
 
