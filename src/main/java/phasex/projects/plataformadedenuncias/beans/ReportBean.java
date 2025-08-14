@@ -27,6 +27,7 @@ public class ReportBean{
 
     private LocalDateTime dataCriacao;
 
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID token_denuncia;
 
     public ReportBean(ReportTypes tipo, String conteudoCriptografado) {
