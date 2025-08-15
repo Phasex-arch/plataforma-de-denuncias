@@ -1,14 +1,9 @@
 package phasex.projects.plataformadedenuncias.dtos;
 
-
-
 import phasex.projects.plataformadedenuncias.beans.ReportTypes;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-
-public record DenunciaResponseDTO(String description, ReportTypes reportType, LocalDateTime dataCriacao, UUID token) implements Serializable {
-
+public record DenunciaTokenResponse(String description, ReportTypes reportType, LocalDateTime dataCriacao, UUID denunciaToken) {
 }
