@@ -3,7 +3,7 @@ package phasex.projects.plataformadedenuncias.beans;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Timestamp;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -27,13 +27,13 @@ public class ReportBean{
 
     private LocalDateTime dataCriacao;
 
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID token_denuncia;
+    private UUID tokenDenuncia;
 
     public ReportBean(ReportTypes tipo, String conteudoCriptografado) {
         this.tipo = tipo;
         this.descricao = conteudoCriptografado;
         this.dataCriacao = LocalDateTime.now();
+        this.tokenDenuncia = UUID.randomUUID();
     }
 
 }
