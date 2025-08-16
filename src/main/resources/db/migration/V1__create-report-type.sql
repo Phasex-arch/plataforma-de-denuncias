@@ -1,0 +1,7 @@
+CREATE TYPE reporttypes AS ENUM (
+    'TRABALHISTA',
+    'PUBLICA',
+    'CRIMINAL',
+    'ADMINISTRATIVA',
+    'DIREITOS_HUMANOS'
+);

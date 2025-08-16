@@ -16,7 +16,7 @@ import java.util.UUID;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ReportBean{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Integer id;
 
@@ -27,6 +27,7 @@ public class ReportBean{
 
     private LocalDateTime dataCriacao;
 
+    @Column(name = "token_denuncia")
     private UUID tokenDenuncia;
 
     public ReportBean(ReportTypes tipo, String conteudoCriptografado) {

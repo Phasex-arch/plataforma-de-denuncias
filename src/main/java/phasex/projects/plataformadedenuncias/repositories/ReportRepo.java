@@ -11,4 +11,6 @@ import java.util.UUID;
 @Repository
 public interface ReportRepo extends JpaRepository<ReportBean, Integer> {
     Optional<ReportBean> findBytokenDenuncia(UUID tokenDenuncia);
+
+    void deleteBytokenDenuncia(UUID id);
 }

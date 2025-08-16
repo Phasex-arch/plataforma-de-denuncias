@@ -1,12 +1,12 @@
 package phasex.projects.plataformadedenuncias.controllers;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import phasex.projects.plataformadedenuncias.beans.ReportBean;
-import phasex.projects.plataformadedenuncias.dtos.DenunciaRequestDto;
-import phasex.projects.plataformadedenuncias.dtos.DenunciaResponseDTO;
-import phasex.projects.plataformadedenuncias.dtos.DenunciaTokenResponse;
+import phasex.projects.plataformadedenuncias.dtos.*;
 import phasex.projects.plataformadedenuncias.services.DenunciaService;
 
 import java.util.ArrayList;
@@ -19,6 +19,7 @@ public class DenunciasController {
 
     private final DenunciaService denunciaService;
 
+    @Autowired
     public DenunciasController(DenunciaService denunciaService) {
         this.denunciaService = denunciaService;
     }
@@ -41,10 +42,23 @@ public class DenunciasController {
         return ResponseEntity.ok(denuncias);
     }
 
-    @GetMapping("/denuncias/{token}")
+    @GetMapping("/{token}")
     public ResponseEntity<DenunciaTokenResponse> getDenuncia(@PathVariable String token) {
         DenunciaTokenResponse response = denunciaService.createTokenResponse(denunciaService.findByUUID(UUID.fromString(token)));
         return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/{token}")
+    public ResponseEntity<DenunciaTokenResponse> deleteDenunciaByToken(@PathVariable String token) {
+        DenunciaTokenResponse response = denunciaService.deleteByUUID(UUID.fromString(token));
+
+        return ResponseEntity.ok(response);
+    }
+
+    @PatchMapping("/{token}")
+    public ResponseEntity<UpdateReportResponseDTO> updateDenuncia(@PathVariable String token,@RequestBody UpdateReportRequestDTO denuncia) {
+        UpdateReportResponseDTO updatedReport = denunciaService.updateReportByUUID(UUID.fromString(token),denuncia);
+        return ResponseEntity.ok(updatedReport);
     }
 
 

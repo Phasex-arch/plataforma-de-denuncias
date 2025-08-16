@@ -2,11 +2,10 @@ package phasex.projects.plataformadedenuncias.services;
 
 
 
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import phasex.projects.plataformadedenuncias.beans.ReportBean;
-import phasex.projects.plataformadedenuncias.dtos.DenunciaRequestDto;
-import phasex.projects.plataformadedenuncias.dtos.DenunciaResponseDTO;
-import phasex.projects.plataformadedenuncias.dtos.DenunciaTokenResponse;
+import phasex.projects.plataformadedenuncias.dtos.*;
 import phasex.projects.plataformadedenuncias.repositories.ReportRepo;
 
 import java.util.List;
@@ -47,9 +46,20 @@ public class DenunciaService {
         return reportRepo.findBytokenDenuncia(uuid).orElse(null);
     }
 
+    @Transactional
+    public DenunciaTokenResponse deleteByUUID(UUID id) {
+        DenunciaTokenResponse denunciaDeletada = createTokenResponse(findByUUID(id));
+        reportRepo.deleteBytokenDenuncia(id);
+        return denunciaDeletada;
+    }
 
-    public void delete(Integer id) {
-        reportRepo.deleteById(id);
+    @Transactional
+    public UpdateReportResponseDTO updateReportByUUID(UUID id, UpdateReportRequestDTO denunciaDto){
+        ReportBean reportBean = findByUUID(id);
+        reportBean.setDescricao(denunciaDto.descricao());
+        reportBean.setTipo(denunciaDto.reportType());
+        reportRepo.save(reportBean);
+        return new UpdateReportResponseDTO(reportBean.getDescricao(),reportBean.getTipo());
     }
 
 }
