@@ -1,10 +1,12 @@
 package phasex.projects.plataformadedenuncias.beans;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 
 import java.util.Collection;
 import java.util.List;
@@ -21,10 +23,19 @@ public class UserBean implements UserDetails {
     @GeneratedValue(strategy= GenerationType.UUID)
     private String id;
 
+    @Email
     private String email;
     private String login;
     private String password;
     private UserRole role;
+
+    public UserBean(String email, String login, String password, UserRole role) {
+        this.email = email;
+        this.login = login;
+        this.password = password;
+        this.role = role;
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
