@@ -11,7 +11,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.bind.annotation.*;
 import phasex.projects.plataformadedenuncias.beans.UserBean;
 import phasex.projects.plataformadedenuncias.dtos.AuthenticateLoginDTO;
+import phasex.projects.plataformadedenuncias.dtos.LoginResponseDTO;
 import phasex.projects.plataformadedenuncias.dtos.RegisterDTO;
+import phasex.projects.plataformadedenuncias.infra.security.TokenService;
 import phasex.projects.plataformadedenuncias.repositories.UsersRepository;
 
 import java.net.URI;
@@ -23,10 +25,12 @@ public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
 
     private final UsersRepository usersRepository;
+    private final TokenService tokenService;
 
-    public AuthenticationController(AuthenticationManager authenticationManager, UsersRepository usersRepository) {
+    public AuthenticationController(AuthenticationManager authenticationManager, UsersRepository usersRepository, TokenService tokenService) {
         this.authenticationManager = authenticationManager;
         this.usersRepository = usersRepository;
+        this.tokenService = tokenService;
     }
 
     @PostMapping("/login")
@@ -34,7 +38,9 @@ public class AuthenticationController {
         var usernamePassword = new UsernamePasswordAuthenticationToken(body.login(), body.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
+        var token = tokenService.generateToken((UserBean) auth.getPrincipal());
+
+        return ResponseEntity.ok(new LoginResponseDTO(token));
 
     }
 
