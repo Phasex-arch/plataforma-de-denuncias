@@ -1,0 +1,32 @@
+.hero-section {
+    background-color: var(--bg-color-tertiary);
+    text-align: center;
+    align-items: center;
+}
+        
+.hero-section h1 {
+    font-size: var(--font-size-xxxl);
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-color-primary);
+}
+        
+.hero-section p {
+    font-size: var(-font-size-md);
+    max-width: 800px;
+    color: var(--text-color-secondary);
+    margin-bottom: var(--spacing-md);
+}
+        
+.warning-box {
+    max-width: 800px;
+    background-color: var(--color-red-100);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-md);
+    border-left: 5px solid var(--border-color-accent);
+    margin-top: var(--spacing-xl);
+}
+        
+.warning-box h3 {
+    color: var(--text-color-accent);
+    margin-bottom: var(--spacing-md);
+}

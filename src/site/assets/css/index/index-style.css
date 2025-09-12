@@ -1,0 +1,23 @@
+body {
+    line-height: var(--line-height-normal);
+    padding-top: 60px; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--bg-color-primary);
+    color: var(--text-color-primary);
+}
+
+/* Container principal */
+.main-content {
+    flex: 1;
+}
+        
+/* Seções */
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--spacing-xl) var(--spacing-lg);
+}
