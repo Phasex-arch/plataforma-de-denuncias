@@ -1,0 +1,87 @@
+.categories-section {
+    background-color: var(--bg-color-secondary);
+}
+        
+.section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-xxl);
+    color: var(--text-color-primary);
+    font-size: var(--font-size-xxl);
+}
+        
+.categories-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-lg);
+}
+        
+.category-card {
+    flex: 1 1 150px;
+    max-width: 375px;
+    background-color: var(--bg-color-tertiary);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: transform var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    min-height: 450px;
+    position: relative;
+    border-top: 4px solid var(--border-color-accent);
+}
+        
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+        
+.category-card h2 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color-accent);
+}
+        
+.category-card p {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color-secondary);
+}
+        
+.category-card .report-btn {
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    font-size: var(--font-size-md);
+    transition: background-color var(--transition-normal);
+    margin-top: auto;
+    align-self: center;
+    width: fit-content;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    white-space: nowrap; 
+    transform: translateX(-50%);
+    text-decoration: none;
+    display: inline-block;
+    font-weight: var(--font-weight-medium);
+}
+        
+.category-card .report-btn:hover {
+    background-color: var(--btn-primary-hover);
+}
+        
+.process-description {
+    max-width: 800px;
+    margin: var(--spacing-xxl) auto 0;
+    padding: var(--spacing-xl);
+    background-color: var(--bg-color-tertiary);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+}
