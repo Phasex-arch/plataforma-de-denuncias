@@ -1,0 +1,129 @@
+/* Fonte Gooogle */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    /* Cores principais */
+    --color-primary-dark: #1a1a1a;
+    --color-secondary-dark: #2d2d2d;
+    --color-tertiary-dark: #3c3c3c;
+            
+    /* Tons de cinza */
+    --color-gray-100: #f5f5f5;
+    --color-gray-200: #e8e8e8;
+    --color-gray-300: #d6d6d6;
+    --color-gray-400: #b8b8b8;
+    --color-gray-500: #9a9a9a;
+    --color-gray-600: #777777;
+    --color-gray-700: #555555;
+    --color-gray-800: #3a3a3a;
+    --color-gray-900: #2a2a2a;
+            
+    /* Tons de vermelho */
+    --color-red-100: #fff0f0;
+    --color-red-200: #f8d7da;
+    --color-red-300: #f1b0b7;
+    --color-red-400: #e88894;
+    --color-red-500: #dc3545;
+    --color-red-600: #c82333;
+    --color-red-700: #a71e2a;
+    --color-red-800: #8B0000;
+    --color-red-900: #600000;
+            
+    /* Cores neutras */
+    --color-white: #f5f5f5;
+    --color-black: #131313;
+    --color-off-white: #fafafa;
+            
+    /* Cores de status */
+    --color-status-in-progress: #cc5500;
+    --color-status-analyzed: #2e7240;
+    --color-status-pending: #8a6d3b;
+    --color-status-resolved: #3c763d;
+            
+    /* Cores de fundo */
+    --bg-color-primary: var(--color-gray-100);
+    --bg-color-secondary: var(--color-gray-200);
+    --bg-color-tertiary: var(--color-white);
+    --bg-color-dark: var(--color-primary-dark);
+            
+    /* Cores de texto */
+    --text-color-primary: var(--color-primary-dark);
+    --text-color-secondary: var(--color-gray-700);
+    --text-color-light: var(--color-gray-600);
+    --text-color-inverted: var(--color-white);
+    --text-color-accent: var(--color-red-800);
+            
+    /* Cores de borda */
+    --border-color-light: var(--color-gray-300);
+    --border-color-medium: var(--color-gray-400);
+    --border-color-dark: var(--color-gray-600);
+    --border-color-accent: var(--color-red-800);
+            
+    /* Cores de botão */
+    --btn-primary-bg: var(--color-red-800);
+    --btn-primary-hover: var(--color-red-900);
+    --btn-primary-text: var(--color-white);
+            
+    /* Sombras */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 2px 10px rgba(0,0,0,0.1);
+    --shadow-lg: 0 5px 15px rgba(0,0,0,0.15);
+    --shadow-xl: 0 10px 25px rgba(0,0,0,0.2);
+            
+    /* Espaçamentos */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 48px;
+            
+    /* Bordas */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --border-radius-xl: 16px;
+    --border-radius-pill: 50px;
+            
+    /* Tamanhos de fonte */
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-md: 16px;
+    --font-size-lg: 17px;
+    --font-size-xl: 24px;
+    --font-size-xxl: 32px;
+    --font-size-xxxl: 40px;
+            
+    /* Pesos de fonte */
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+            
+    /* Alturas de linha */
+    --line-height-tight: 1.25;
+     --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+            
+    /* Transições */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+            
+    /* Z-index */
+    --z-index-dropdown: 1000;
+    --z-index-sticky: 1020;
+    --z-index-fixed: 1030;
+    --z-index-modal-backdrop: 1040;
+    --z-index-modal: 1050;
+    --z-index-popover: 1060;
+    --z-index-tooltip: 1070;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
