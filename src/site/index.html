@@ -1,24 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Icon -->
+    <link rel="icon" type="image/png" href="assets/css/img/logo.png">
+    <link rel="stylesheet" href="style.css">
+
     <title>Voz Segura</title>
 
     <!-- CSS Links -->
-    <!-- Principal -->
     <link rel="stylesheet" href="style.css">
-    <!-- Seções Específicas -->
-    <link rel="stylesheet" href="assets/css/index/navbar.css">
     <link rel="stylesheet" href="assets/css/index/hero.css">
-    <link rel="stylesheet" href="assets/css/index/index-style.css">
+    <link rel="stylesheet" href="assets/css/index/navbar.css">
+    <link rel="stylesheet" href="assets/css/index/feed.css">
+    <link rel="stylesheet" href="assets/css/index/responsive.css">
     <link rel="stylesheet" href="assets/css/index/category.css">
+    <link rel="stylesheet" href="assets/css/index/tracking.css">
+    <link rel="stylesheet" href="assets/css/index/footer.css">
+    <link rel="stylesheet" href="assets/css/index/style.css">
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">Voz Segura</a>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Início</a></li>
                 <li><a href="#categories">Tipos</a></li>
@@ -27,7 +38,8 @@
             </ul>
         </div>
     </nav>
-
+    
+    <!-- Conteúdo principal -->
     <div class="main-content">
         <!-- Seção 1 - Título e texto -->
         <section id="home" class="hero-section">
@@ -39,8 +51,8 @@
                 <p>Em casos de extrema gravidade, como ameaças à vida ou crimes violentos, o anonimato poderá ser quebrado conforme determinação legal, e a denúncia será encaminhada às autoridades competentes para registro de Boletim de Ocorrência.</p>
             </div>
         </section>
-
-        <!-- Seção 2 - Categorias -->
+        
+        <!-- Seção 2 - 5 categorias -->
         <section id="categories" class="categories-section">
             <h2 class="section-title">Tipos de Denúncia</h2>
             
@@ -96,7 +108,155 @@
                 <p>4. Nossa equipe analisará sua denúncia e tomará as providências necessárias</p>
             </div>
         </section>
-
+        
+        <!-- Seção 3 - Feed de Denúncias -->
+        <section id="feed" class="feed-section">
+            <div class="feed-container">
+                <h2 class="section-title">Feed de Denúncias</h2>
+                
+                <!-- Denúncia Trabalhista (mostra empresa) -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <span class="report-type">Trabalhista - Assédio Moral</span>
+                        <span class="report-date">15/08/2023</span>
+                    </div>
+                    <div class="report-entity">Empresa: Construtora ABC Ltda</div>
+                    <div class="report-description">
+                        <p>Funcionários estão sendo constantemente humilhados pelo gerente em reuniões públicas. Relatos de xingamentos e ameaças de demissão sem justa causa.</p>
+                    </div>
+                </div>
+                
+                <!-- Denúncia Pública (mostra órgão público) -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <span class="report-type">Pública - Corrupção</span>
+                        <span class="report-date">10/08/2023</span>
+                    </div>
+                    <div class="report-entity">Órgão Público: Prefeitura Municipal de São Paulo</div>
+                    <div class="report-description">
+                        <p>Prefeito está desviando verba pública destinada à merenda escolar. Contratos estão sendo superfaturados e empresas fantasmas estão sendo beneficiadas.</p>
+                    </div>
+                </div>
+                
+                <!-- Denúncia Penal (não mostra empresa/órgão) -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <span class="report-type">Penal - Roubo</span>
+                        <span class="report-date">05/08/2023</span>
+                    </div>
+                    <div class="report-description">
+                        <p>Grupo organizado está realizando assaltos em série no centro da cidade, sempre no mesmo horário (entre 18h e 20h). Usam motos vermelhas e estão armados.</p>
+                    </div>
+                </div>
+                
+                <!-- Denúncia Direitos Humanos (mostra empresa) -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <span class="report-type">Direitos Humanos - Racismo</span>
+                        <span class="report-date">01/08/2023</span>
+                    </div>
+                    <div class="report-entity">Estabelecimento: Restaurante Estrela Dourada</div>
+                    <div class="report-description">
+                        <p>Estabelecimento comercial está recusando atendimento a pessoas negras. Funcionários foram instruídos a inventar desculpas como "lotação máxima" ou "reservas antecipadas".</p>
+                    </div>
+                </div>
+                
+                <!-- Adicione mais denúncias aqui para testar -->
+                <div class="report-card hidden-report">
+                    <div class="report-header">
+                        <span class="report-type">Ambiental - Poluição</span>
+                        <span class="report-date">28/07/2023</span>
+                    </div>
+                    <div class="report-entity">Empresa: Química Industrial XYZ</div>
+                    <div class="report-description">
+                        <p>Descarte irregular de resíduos tóxicos no rio local, causando mortandade de peixes e contaminação da água.</p>
+                    </div>
+                </div>
+                
+                <div class="report-card hidden-report">
+                    <div class="report-header">
+                        <span class="report-type">Administrativa - Desvio de Verba</span>
+                        <span class="report-date">25/07/2023</span>
+                    </div>
+                    <div class="report-entity">Órgão: Secretaria Municipal de Educação</div>
+                    <div class="report-description">
+                        <p>Desvio de verbas destinadas à compra de material escolar. Notas fiscais falsas estão sendo utilizadas para justificar gastos inexistentes.</p>
+                    </div>
+                </div>
+                
+                <!-- Botão "Mais Denúncias" (será mostrado via JavaScript) -->
+                <div class="more-reports-container">
+                    <a href="assets/pages/todas-denuncias.html" class="more-reports-btn">Mais Denúncias</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção 4 - Acompanhamento de Denúncia -->
+        <section id="tracking" class="tracking-section">
+            <div class="tracking-container">
+                <h2 class="section-title">Acompanhar Denúncia</h2>
+                
+                <div class="search-report">
+                    <h3>Consultar status da denúncia</h3>
+                    <form class="search-form">
+                        <input type="text" placeholder="Digite o ID da sua denúncia" required>
+                        <button type="submit">Buscar</button>
+                    </form>
+                </div>
+                
+                <div class="report-status">
+                    <div class="status-header">
+                        <span class="status-id">ID: #DEN20230815-001</span>
+                        <span class="status-type">Trabalhista - Assédio Moral</span>
+                    </div>
+                    
+                    <div class="status-info">
+                        <div class="status-item">
+                            <span class="status-label">Data de envio:</span>
+                            <span class="status-value">15/08/2025</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Status:</span>
+                            <span class="status-value status-in-progress">Em análise</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Última atualização:</span>
+                            <span class="status-value">17/08/2025 - Encaminhada para o setor responsável</span>
+                        </div>
+                    </div>
+                    
+                    <div class="status-response">
+                        <h4>Resposta:</h4>
+                        <p>Sua denúncia está sendo analisada pela equipe de direitos trabalhistas. O prazo médio para resposta é de 15 dias úteis. Caso necessitem de mais informações, entraremos em contato através do canal de comunicação fornecido.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="names">
+                <a href="https://github.com/isadorameneghetti" aria-label="Ricardo">Isadora M.</a>
+                <a href="https://github.com/KDMint" aria-label="Khadija">Khadija L.</a>
+                <a href="https://github.com/RicardoFernandes2004" aria-label="Ricardo">Ricardo A.</a>
+                <a href="https://github.com/VinicusWince30923" aria-label="Ricardo">Vinícius W.</a>
+            </div>
+            
+            <ul class="footer-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#categories">Tipos</a></li>
+                <li><a href="#feed">Feed</a></li>
+                <li><a href="#tracking">Acompanhar</a></li>
+            </ul>
+            
+            <p class="copyright">&copy; 2025 Phase-X. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Link -->
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/feed.js"></script>
 </body>
 </html>

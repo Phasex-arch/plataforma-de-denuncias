@@ -1,0 +1,19 @@
+body {
+    line-height: var(--line-height-normal);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 10px;
+    background-color: var(--bg-color-primary);
+    color: var(--text-color-primary);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px var(--spacing-lg) var(--spacing-xxl);
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}

@@ -1,0 +1,200 @@
+/* Estilo específico para o select de tipo de irregularidade */
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--spacing-md) center;
+    background-size: 16px;
+    padding-right: calc(var(--spacing-md) * 2 + 16px);
+}
+
+.form-group select option {
+    padding: var(--spacing-sm);
+    background-color: var(--color-white);
+}
+
+.form-group select option:checked {
+    background-color: var(--color-red-100);
+    color: var(--color-red-800);
+}
+
+.file-upload {
+    border: 2px dashed var(--border-color-light);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    background-color: var(--color-off-white);
+}
+
+.file-upload:hover {
+    border-color: var(--color-red-600);
+    background-color: var(--color-gray-100);
+}
+
+.file-upload input {
+    display: none;
+}
+
+.file-upload-label {
+    display: block;
+    font-size: var(--font-size-sm);
+    color: var(--text-color-light);
+}
+
+.file-upload-label strong {
+    color: var(--color-red-800);
+    font-weight: var(--font-weight-medium);
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-radius-md);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: var(--z-index-dropdown);
+    box-shadow: var(--shadow-md);
+    display: none;
+}
+
+.search-result-item {
+    padding: var(--spacing-sm) var(--spacing-md);
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.search-result-item:hover {
+    background-color: var(--color-gray-100);
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.company-info {
+    background-color: var(--color-gray-100);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    margin-top: var(--spacing-sm);
+    display: none;
+}
+
+.company-info h4 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-red-800);
+}
+
+.company-detail {
+    display: flex;
+    margin-bottom: var(--spacing-xs);
+}
+
+.company-detail-label {
+    font-weight: var(--font-weight-medium);
+    min-width: 120px;
+}
+
+/* Sugestões de preenchimento */
+.suggestions-container {
+    position: relative;
+}
+        
+.suggestions-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-radius-md);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: var(--z-index-dropdown);
+    box-shadow: var(--shadow-md);
+    display: none;
+}
+        
+.suggestion-item {
+    padding: var(--spacing-sm) var(--spacing-md);
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color-light);
+}
+        
+.suggestion-item:hover {
+    background-color: var(--color-gray-100);
+}
+        
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+        
+.input-with-icon {
+    position: relative;
+}
+        
+.input-icon {
+    position: absolute;
+    right: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray-500);
+}
+        
+/* Estilo customizado para o select de tipo de irregularidade */
+.select-wrapper {
+    position: relative;
+}
+        
+.select-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: var(--spacing-md);
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+}
+
+/* Notificação de emergência */
+.emergency-notice {
+    background-color: var(--color-red-100);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    border-left: 4px solid var(--color-red-600);
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-red-800);
+    font-size: var(--font-size-sm);
+}
+
+.emergency-notice h4 {
+    margin-bottom: var(--spacing-xs);
+    font-weight: var(--font-weight-bold);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.emergency-notice h4 i {
+    font-size: var(--font-size-md);
+}
+
+.emergency-notice p {
+    margin: 0;
+    line-height: var(--line-height-relaxed);
+}

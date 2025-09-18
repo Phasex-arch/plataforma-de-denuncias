@@ -44,3 +44,21 @@
 .nav-links a:hover {
     color: var(--text-color-accent);
 }
+        
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+        
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color-inverted);
+    transition: all var(--transition-normal);
+}

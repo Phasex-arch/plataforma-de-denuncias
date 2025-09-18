@@ -1,0 +1,164 @@
+/* Mensagens de erro - Estilo consistente com o design system */
+
+.error-message {
+    display: none;
+    color: var(--color-red-700);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    margin-top: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    background-color: var(--color-red-100);
+    border: 1px solid var(--color-red-300);
+    border-radius: var(--border-radius-md);
+    line-height: var(--line-height-normal);
+    animation: fadeIn 0.3s var(--transition-normal);
+}
+
+.error-message.show {
+    display: block;
+}
+
+.cnpj-error {
+    display: none;
+    color: var(--color-red-700);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    margin-top: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    background-color: var(--color-red-100);
+    border: 1px solid var(--color-red-300);
+    border-radius: var(--border-radius-md);
+    line-height: var(--line-height-normal);
+    animation: fadeIn 0.3s var(--transition-normal);
+}
+
+.cnpj-error.show {
+    display: block;
+}
+
+/* CORREÇÃO: Estilo para campos inválidos - exceto placeholder */
+input:invalid:not(:placeholder-shown), 
+textarea:invalid:not(:placeholder-shown), 
+select:invalid:not(:placeholder-shown) {
+    border-color: var(--color-red-500) !important;
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.1);
+}
+
+input:invalid:not(:placeholder-shown):focus, 
+textarea:invalid:not(:placeholder-shown):focus, 
+select:invalid:not(:placeholder-shown):focus {
+    border-color: var(--color-red-600) !important;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+}
+
+/* CORREÇÃO: Estilo para campos válidos quando preenchidos */
+input:valid:not(:placeholder-shown), 
+textarea:valid:not(:placeholder-shown), 
+select:valid:not(:placeholder-shown) {
+    border-color: var(--color-status-analyzed) !important;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-5px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.error-shake {
+    animation: shake 0.3s var(--transition-fast);
+}
+
+/* Tooltip de erro para campos obrigatórios */
+.required-field::after {
+    content: "*";
+    color: var(--color-red-600);
+    margin-left: 3px;
+}
+
+/* Estilo para grupos de formulário com erro */
+.form-group.has-error .form-label {
+    color: var(--color-red-700);
+}
+
+.form-group.has-error input,
+.form-group.has-error textarea,
+.form-group.has-error select {
+    border-color: var(--color-red-500);
+    background-color: var(--color-red-50);
+}
+
+/* Mensagem de erro específica para arquivos */
+.file-error {
+    display: none;
+    color: var(--color-red-700);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    background-color: var(--color-red-100);
+    border: 1px solid var(--color-red-300);
+    border-radius: var(--border-radius-md);
+}
+
+.file-error.show {
+    display: block;
+}
+
+/* Estilo para validação em tempo real */
+.validating {
+    border-color: var(--color-status-pending) !important;
+}
+
+.validation-success {
+    border-color: var(--color-status-analyzed) !important;
+}
+
+.validation-error {
+    border-color: var(--color-red-500) !important;
+}
+
+/* Loading durante validação */
+@keyframes validating-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.validating {
+    animation: validating-pulse 1.5s infinite;
+}
+
+/* Estilo para o ícone de erro */
+.error-icon {
+    color: var(--color-red-600);
+    margin-right: var(--spacing-xs);
+    font-size: var(--font-size-md);
+}
+
+/* Container de erro */
+.error-container {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+}
+
+/* Estilo para listas de erro */
+.error-list {
+    margin: 0;
+    padding-left: var(--spacing-md);
+}
+
+.error-list li {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-red-700);
+}

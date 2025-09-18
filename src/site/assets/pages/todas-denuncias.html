@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todas as Denúncias - Voz Segura</title>
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="../css/index/style.css">
+    <style>
+        /* Estilos específicos para esta página */
+        :root {
+            --color-primary-dark: #1a365d;
+            --color-red-800: #991b1b;
+            --color-red-600: #dc2626;
+            --color-red-300: #fca5a5;
+            --color-red-100: #fee2e2;
+            --color-white: #ffffff;
+            --color-off-white: #f7fafc;
+            --color-gray-100: #f7fafc;
+            --color-gray-600: #718096;
+            --color-gray-700: #4a5568;
+            --text-color-primary: #2d3748;
+            --text-color-light: #718096;
+            --border-color-light: #e2e8f0;
+            --border-radius-md: 0.375rem;
+            --border-radius-lg: 0.5rem;
+            --border-radius-pill: 9999px;
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+            --font-size-sm: 0.875rem;
+            --font-size-md: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-xxl: 1.5rem;
+            --font-size-xxxl: 1.875rem;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.625;
+            --transition-fast: 150ms ease;
+            --transition-normal: 300ms ease;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+        }
+        
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--color-white);
+            text-decoration: none;
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            transition: opacity var(--transition-fast);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            opacity: 0.9;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .page-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        .content-container {
+            padding: 30px;
+        }
+        
+        /* Filtros e busca */
+        .reports-filters {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: var(--font-weight-medium);
+            color: var(--text-color-primary);
+        }
+
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--border-color-light);
+            border-radius: var(--border-radius-md);
+            font-size: var(--font-size-md);
+            background-color: var(--color-off-white);
+        }
+
+        .filter-group select:focus,
+        .filter-group input:focus {
+            border-color: var(--color-red-600);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+        }
+
+        .search-btn {
+            background-color: var(--color-red-800);
+            color: var(--color-white);
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-weight: var(--font-weight-medium);
+            transition: background-color var(--transition-fast);
+            align-self: flex-end;
+            height: fit-content;
+        }
+
+        .search-btn:hover {
+            background-color: var(--color-red-600);
+        }
+
+        /* Estatísticas */
+        .reports-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .stat-card {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-number {
+            font-size: var(--font-size-xxl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-red-800);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .stat-label {
+            color: var(--text-color-light);
+            font-size: var(--font-size-sm);
+        }
+
+        /* Lista de denúncias */
+        .reports-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .report-card {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            border-left: 4px solid var(--color-red-800);
+        }
+
+        .report-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .report-type {
+            background-color: var(--color-red-100);
+            color: var(--color-red-800);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius-pill);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .report-date {
+            color: var(--text-color-light);
+            font-size: var(--font-size-sm);
+        }
+
+        .report-entity {
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-primary-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .report-description {
+            color: var(--text-color-primary);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .report-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--border-color-light);
+        }
+
+        .report-id {
+            font-size: var(--font-size-sm);
+            color: var(--text-color-light);
+        }
+
+        /* Paginação */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--spacing-xl);
+            gap: var(--spacing-sm);
+        }
+
+        .pagination-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--border-color-light);
+            border-radius: var(--border-radius-md);
+            background-color: var(--color-white);
+            color: var(--text-color-primary);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .pagination-btn:hover:not(.active, .disabled) {
+            background-color: var(--color-red-100);
+            border-color: var(--color-red-300);
+        }
+
+        .pagination-btn.active {
+            background-color: var(--color-red-800);
+            color: var(--color-white);
+            border-color: var(--color-red-800);
+        }
+
+        .pagination-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Mensagem de denúncia anônima */
+        .anonymous-notice {
+            background-color: var(--color-gray-100);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            margin: var(--spacing-lg) 0;
+            text-align: center;
+            color: var(--text-color-light);
+            font-size: var(--font-size-sm);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+                margin-left: 0;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .reports-filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-group {
+                min-width: auto;
+            }
+            
+            .search-btn {
+                align-self: stretch;
+            }
+            
+            .reports-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .report-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .report-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .pagination {
+                flex-wrap: wrap;
+            }
+            
+            .back-link {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Cabeçalho da página -->
+        <header class="page-header">
+            <a href="../../index.html" class="back-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Voltar para a página inicial
+                </a>
+            <h1 class="page-title">Todas as Denúncias</h1>
+            <p class="page-subtitle">Visualize todas as denúncias registradas em nossa plataforma</p>
+        </header>
+        
+        <!-- Conteúdo principal -->
+        <div class="content-container">
+            <!-- Filtros e busca -->
+            <div class="reports-filters">
+                <div class="filter-group">
+                    <label for="category-filter">Filtrar por tipo</label>
+                    <select id="category-filter">
+                        <option value="all">Todos os tipos</option>
+                        <option value="trabalhista">Trabalhista</option>
+                        <option value="ambiental">Ambiental</option>
+                        <option value="direitos-humanos">Direitos Humanos</option>
+                        <option value="publica">Pública</option>
+                        <option value="administrativa">Administrativa</option>
+                        <option value="penal">Penal</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="search-input">Buscar</label>
+                    <input type="text" id="search-input" placeholder="Palavra-chave...">
+                </div>
+                
+                <button class="search-btn">Aplicar filtros</button>
+            </div>
+            
+            <!-- Estatísticas -->
+            <div class="reports-stats">
+                <div class="stat-card">
+                    <div class="stat-number">156</div>
+                    <div class="stat-label">Total de denúncias</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">42</div>
+                    <div class="stat-label">Em análise</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">87</div>
+                    <div class="stat-label">Resolvidas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">27</div>
+                    <div class="stat-label">Pendentes</div>
+                </div>
+            </div>
+            
+            <!-- Lista de denúncias -->
+            <div class="reports-list">
+                <!-- Denúncia 1 -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <span class="report-type">Trabalhista - Assédio Moral</span>
+                        <span class="report-date">15/08/2023</span>
+                    </div>
+                    <div class="report-entity">Empresa: Construtora ABC Ltda</div>
+                    <div class="report-description">
+                        <p>Funcionários estão sendo constantemente humilhados pelo gerente em reuniões públicas. Relatos de xingamentos e ameaças de demissão sem justa causa.</p>
+                    </div>
+                    <div class="report-meta">
+                        <span class="report-id">ID: #DEN20230815-001</span>
+                    </div>
+                </div>
+                
+                <!-- Denúncia 2 -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <span class="report-type">Pública - Corrupção</span>
+                        <span class="report-date">10/08/2023</span>
+                    </div>
+                    <div class="report-entity">Órgão Público: Prefeitura Municipal de São Paulo</div>
+                    <div class="report-description">
+                        <p>Prefeito está desviando verba pública destinada à merenda escolar. Contratos estão sendo superfaturados e empresas fantasmas estão sendo beneficiadas.</p>
+                    </div>
+                    <div class="report-meta">
+                        <span class="report-id">ID: #DEN20230810-002</span>
+                    </div>
+                </div>
+                
+                <!-- Denúncia 3 -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <span class="report-type">Penal - Roubo</span>
+                        <span class="report-date">05/08/2023</span>
+                    </div>
+                    <div class="report-description">
+                        <p>Grupo organizado está realizando assaltos em série no centro da cidade, sempre no mesmo horário (entre 18h e 20h). Usam motos vermelhas e estão armados.</p>
+                    </div>
+                    <div class="report-meta">
+                        <span class="report-id">ID: #DEN20230805-003</span>
+                    </div>
+                </div>
+                
+                <!-- Denúncia 4 -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <span class="report-type">Direitos Humanos - Racismo</span>
+                        <span class="report-date">01/08/2023</span>
+                    </div>
+                    <div class="report-entity">Estabelecimento: Restaurante Estrela Dourada</div>
+                    <div class="report-description">
+                        <p>Estabelecimento comercial está recusando atendimento a pessoas negras. Funcionários foram instruídos a inventar desculpas como "lotação máxima" ou "reservas antecipadas".</p>
+                    </div>
+                    <div class="report-meta">
+                        <span class="report-id">ID: #DEN20230801-004</span>
+                    </div>
+                </div>
+                
+                <!-- Denúncia 5 -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <span class="report-type">Ambiental - Poluição</span>
+                        <span class="report-date">28/07/2023</span>
+                    </div>
+                    <div class="report-entity">Empresa: Química Industrial XYZ</div>
+                    <div class="report-description">
+                        <p>Descarte irregular de resíduos tóxicos no rio local, causando mortandade de peixes e contaminação da água.</p>
+                    </div>
+                    <div class="report-meta">
+                        <span class="report-id">ID: #DEN20230728-005</span>
+                    </div>
+                </div>
+                
+                <!-- Denúncia 6 -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <span class="report-type">Administrativa - Desvio de Verba</span>
+                        <span class="report-date">25/07/2023</span>
+                    </div>
+                    <div class="report-entity">Órgão: Secretaria Municipal de Educação</div>
+                    <div class="report-description">
+                        <p>Desvio de verbas destinadas à compra de material escolar. Notas fiscais falsas estão sendo utilizadas para justificar gastos inexistentes.</p>
+                    </div>
+                    <div class="report-meta">
+                        <span class="report-id">ID: #DEN20230725-006</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Paginação -->
+            <div class="pagination">
+                <button class="pagination-btn disabled" id="prev-page">&laquo; Anterior</button>
+                <button class="pagination-btn active" data-page="1">1</button>
+                <button class="pagination-btn" data-page="2">2</button>
+                <button class="pagination-btn" data-page="3">3</button>
+                <button class="pagination-btn" id="next-page">Próximo &raquo;</button>
+            </div>
+            
+            <!-- Mensagem de denúncia anônima -->
+            <div class="anonymous-notice">
+                <strong>Importante:</strong> Para proteger a identidade dos denunciantes, algumas informações sensíveis foram omitidas ou generalizadas.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Funcionalidade de filtro e paginação
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryFilter = document.getElementById('category-filter');
+            const searchInput = document.getElementById('search-input');
+            const searchBtn = document.querySelector('.search-btn');
+            const reportCards = document.querySelectorAll('.report-card');
+            const paginationBtns = document.querySelectorAll('.pagination-btn');
+            const prevPageBtn = document.getElementById('prev-page');
+            const nextPageBtn = document.getElementById('next-page');
+            
+            let currentPage = 1;
+            const itemsPerPage = 3;
+            let filteredReports = Array.from(reportCards);
+            
+            // Função para aplicar filtros
+            function applyFilters() {
+                const categoryValue = categoryFilter.value;
+                const searchValue = searchInput.value.toLowerCase();
+                
+                filteredReports = Array.from(reportCards).filter(card => {
+                    const type = card.querySelector('.report-type').textContent.toLowerCase();
+                    const description = card.querySelector('.report-description').textContent.toLowerCase();
+                    const entity = card.querySelector('.report-entity') ? card.querySelector('.report-entity').textContent.toLowerCase() : '';
+                    
+                    const categoryMatch = categoryValue === 'all' || type.includes(categoryValue);
+                    const searchMatch = searchValue === '' || 
+                                        description.includes(searchValue) || 
+                                        entity.includes(searchValue) || 
+                                        type.includes(searchValue);
+                    
+                    return categoryMatch && searchMatch;
+                });
+                
+                currentPage = 1;
+                showPage(currentPage);
+                updatePagination();
+            }
+            
+            // Função para mostrar uma página específica
+            function showPage(page) {
+                const startIndex = (page - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                
+                // Ocultar todas as denúncias
+                reportCards.forEach(card => {
+                    card.style.display = 'none';
+                });
+                
+                // Mostrar apenas as denúncias da página atual
+                filteredReports.forEach((card, index) => {
+                    if (index >= startIndex && index < endIndex) {
+                        card.style.display = 'block';
+                    }
+                });
+                
+                // Atualizar botões de paginação
+                paginationBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.page && parseInt(btn.dataset.page) === page) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                // Habilitar/desabilitar botões de anterior/próximo
+                prevPageBtn.classList.toggle('disabled', page === 1);
+                nextPageBtn.classList.toggle('disabled', endIndex >= filteredReports.length);
+            }
+            
+            // Função para atualizar a paginação
+            function updatePagination() {
+                const totalPages = Math.ceil(filteredReports.length / itemsPerPage);
+                
+                // Mostrar apenas os números de página necessários
+                paginationBtns.forEach(btn => {
+                    if (btn.dataset.page) {
+                        const pageNum = parseInt(btn.dataset.page);
+                        btn.style.display = pageNum <= totalPages ? 'block' : 'none';
+                    }
+                });
+            }
+            
+            // Event listeners para filtros
+            categoryFilter.addEventListener('change', applyFilters);
+            searchInput.addEventListener('input', applyFilters);
+            searchBtn.addEventListener('click', applyFilters);
+            
+            // Event listeners para paginação
+            paginationBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (this.classList.contains('disabled')) return;
+                    
+                    if (this.id === 'prev-page') {
+                        currentPage--;
+                    } else if (this.id === 'next-page') {
+                        currentPage++;
+                    } else if (this.dataset.page) {
+                        currentPage = parseInt(this.dataset.page);
+                    }
+                    
+                    showPage(currentPage);
+                });
+            });
+            
+            // Inicializar a página
+            applyFilters();
+        });
+    </script>
+</body>
+</html>

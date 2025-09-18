@@ -1,0 +1,55 @@
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+            
+    .nav-links {
+        display: none;
+    }
+            
+    .form-header {
+        padding: var(--spacing-lg);
+    }
+            
+    .form-body {
+        padding: var(--spacing-lg);
+    }
+            
+    .main-content {
+        padding: calc(var(--spacing-xl) + 60px) var(--spacing-md) var(--spacing-xl);
+    }
+            
+    .footer-links {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .radio-group {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+            
+    .company-detail {
+        flex-direction: column;
+    }
+            
+    .company-detail-label {
+        min-width: auto;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+            
+    .form-group select {
+        background-position: right var(--spacing-sm) center;
+    }
+
+    .error-message,
+    .cnpj-error {
+        font-size: var(--font-size-xs);
+        padding: var(--spacing-xs);
+    }
+}

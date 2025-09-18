@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penal | Voz Segura</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos CSS */
+        :root {
+            /* Cores */
+            --color-primary-dark: #1a365d;
+            --color-red-800: #991b1b;
+            --color-red-600: #dc2626;
+            --color-red-300: #fca5a5;
+            --color-red-100: #fee2e2;
+            --color-red-900: #7f1d1d;
+            --color-white: #ffffff;
+            --color-off-white: #f9fafb;
+            --color-gray-100: #f3f4f6;
+            --color-gray-400: #9ca3af;
+            --color-gray-600: #4b5563;
+            --color-gray-700: #374151;
+            
+            /* Espaçamento */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+            
+            /* Tipografia */
+            --font-size-sm: 0.875rem;
+            --font-size-md: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-xxl: 1.5rem;
+            --font-size-xxxl: 2rem;
+            
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.75;
+            
+            /* Bordas e Sombras */
+            --border-radius-md: 0.375rem;
+            --border-radius-lg: 0.5rem;
+            --border-radius-pill: 9999px;
+            
+            --border-color-light: #e5e7eb;
+            
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            /* Transições */
+            --transition-fast: 150ms ease;
+            --transition-normal: 300ms ease;
+            
+            /* Z-index */
+            --z-index-sticky: 1020;
+            --z-index-dropdown: 1030;
+            --z-index-modal: 1040;
+            
+            /* Outros */
+            --bg-color-primary: #f5f5f5;
+            --text-color-primary: #333333;
+            --text-color-light: #6b7280;
+            
+            --btn-primary-bg: #dc2626;
+            --btn-primary-text: #ffffff;
+            --btn-primary-hover: #b91c1c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: var(--line-height-normal);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: var(--bg-color-primary);
+            color: var(--text-color-primary);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-primary-dark);
+            padding: var(--spacing-md) 0;
+            z-index: var(--z-index-sticky);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .logo {
+            color: var(--color-white);
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .logo-icon {
+            color: var(--color-red-600);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-xl);
+        }
+
+        .nav-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: var(--font-weight-medium);
+            transition: color var(--transition-fast);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius-pill);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-red-300);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: calc(var(--spacing-xxl) + 60px) var(--spacing-lg) var(--spacing-xxl);
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        /* Denúncia Container */
+        .report-container {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        /* Form Header */
+        .form-header {
+            background-color: var(--color-red-800);
+            color: var(--color-white);
+            padding: var(--spacing-xl);
+            position: relative;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--color-white);
+            text-decoration: none;
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            transition: opacity var(--transition-fast);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            opacity: 0.9;
+        }
+
+        .back-link svg {
+            margin-right: var(--spacing-sm);
+        }
+
+        .form-title-container {
+            display: flex;
+            align-items: center;
+            margin-top: var(--spacing-sm);
+            gap: var(--spacing-md);
+        }
+
+        .form-icon {
+            font-size: var(--font-size-xxl);
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .form-title {
+            font-size: var(--font-size-xxl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .form-subtitle {
+            font-size: var(--font-size-sm);
+            opacity: 0.9;
+        }
+
+        /* Form Body */
+        .form-body {
+            padding: var(--spacing-xl);
+        }
+
+        .form-section {
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color-light);
+        }
+
+        .form-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: var(--font-size-lg);
+            color: var(--color-red-800);
+            margin-bottom: var(--spacing-md);
+            font-weight: var(--font-weight-semibold);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .section-title i {
+            font-size: var(--font-size-md);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: var(--font-weight-medium);
+            color: var(--text-color-primary);
+        }
+
+        .form-group label.required:after {
+            content: " *";
+            color: var(--color-red-600);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-color-light);
+            border-radius: var(--border-radius-md);
+            font-size: var(--font-size-md);
+            transition: all var(--transition-fast);
+            background-color: var(--color-off-white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-red-600);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+            background-color: var(--color-white);
+        }
+
+        /* Textarea com auto-expansão */
+        .form-group .auto-expand {
+            min-height: 150px;
+            resize: none;
+            line-height: var(--line-height-relaxed);
+            overflow: hidden;
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: var(--spacing-xs);
+            color: var(--text-color-light);
+            font-size: var(--font-size-sm);
+        }
+
+        .form-row {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .file-upload {
+            border: 2px dashed var(--border-color-light);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            background-color: var(--color-off-white);
+        }
+
+        .file-upload:hover {
+            border-color: var(--color-red-600);
+            background-color: var(--color-gray-100);
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .file-upload-label {
+            display: block;
+            font-size: var(--font-size-sm);
+            color: var(--text-color-light);
+        }
+
+        .file-upload-label strong {
+            color: var(--color-red-800);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            cursor: pointer;
+        }
+
+        .radio-option input {
+            width: auto;
+        }
+
+        .submit-btn {
+            background-color: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            border: none;
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-size: var(--font-size-md);
+            font-weight: var(--font-weight-semibold);
+            transition: background-color var(--transition-fast);
+            width: 100%;
+            margin-top: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+        }
+
+        .submit-btn:hover {
+            background-color: var(--btn-primary-hover);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Modal de protocolo */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: var(--z-index-modal);
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-xl);
+            width: 90%;
+            max-width: 500px;
+            padding: var(--spacing-xl);
+            position: relative;
+            transform: translateY(-50px);
+            transition: transform var(--transition-normal);
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            background: none;
+            border: none;
+            font-size: var(--font-size-xl);
+            cursor: pointer;
+            color: var(--color-gray-600);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .modal-icon {
+            font-size: var(--font-size-xxxl);
+            color: var(--color-red-800);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .modal-title {
+            font-size: var(--font-size-xl);
+            color: var(--color-red-800);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .protocol-number {
+            font-size: var(--font-size-xxl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary-dark);
+            text-align: center;
+            margin: var(--spacing-lg) 0;
+            padding: var(--spacing-md);
+            background-color: var(--color-gray-100);
+            border-radius: var(--border-radius-md);
+            letter-spacing: 2px;
+        }
+
+        .modal-info {
+            background-color: var(--color-red-100);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            margin: var(--spacing-lg) 0;
+            font-size: var(--font-size-sm);
+            color: var(--color-red-800);
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-xl);
+        }
+
+        .modal-btn {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-weight: var(--font-weight-medium);
+            transition: all var(--transition-fast);
+        }
+
+        .modal-btn-primary {
+            background-color: var(--color-red-800);
+            color: var(--color-white);
+            border: none;
+        }
+
+        .modal-btn-primary:hover {
+            background-color: var(--color-red-900);
+        }
+
+        .modal-btn-secondary {
+            background-color: transparent;
+            color: var(--color-gray-700);
+            border: 1px solid var(--color-gray-400);
+        }
+
+        .modal-btn-secondary:hover {
+            background-color: var(--color-gray-100);
+        }
+
+        /* Notificação de emergência */
+        .emergency-notice {
+            background-color: var(--color-red-100);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            border-left: 4px solid var(--color-red-600);
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-red-800);
+            font-size: var(--font-size-sm);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .form-header {
+                padding: var(--spacing-lg);
+            }
+            
+            .form-body {
+                padding: var(--spacing-lg);
+            }
+            
+            .main-content {
+                padding: calc(var(--spacing-xl) + 60px) var(--spacing-md) var(--spacing-xl);
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <div class="report-container">
+            <!-- Cabeçalho do Formulário -->
+            <div class="form-header">
+                <a href="../../index.html" class="back-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Voltar para a página inicial
+                </a>
+                
+                <div class="form-title-container">
+                    <span class="form-icon">
+                        <i class="fas fa-gavel"></i>
+                    </span>
+                    <div>
+                        <h1 class="form-title">Denúncia Penal</h1>
+                        <p class="form-subtitle">Preencha todos os campos obrigatórios (*)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Corpo do Formulário -->
+            <div class="form-body">
+                <div class="emergency-notice">
+                    <h4><i class="fas fa-exclamation-triangle"></i> ATENÇÃO: Casos de emergência</h4>
+                    <p>Se você está em situação de risco imediato, ligue para o 190 (Polícia Militar) ou 180 (Central de Atendimento à Mulher). Esta plataforma não substitui o registro de ocorrência policial.</p>
+                </div>
+                
+                <form id="formreportAdministrativa">
+                    <!-- Seção 1: Informações Básicas -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-info-circle"></i>
+                            Informações Básicas
+                        </h3>
+                        
+                        <div class="form-group">
+                            <label for="nome-pessoa" class="required">Nome da Pessoa</label>
+                            <input type="text" id="nome-pessoa" name="nome-pessoa" required placeholder="Digite o nome completo da pessoa">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="estado-pessoa" class="required">Estado da Pessoa</label>
+                            <select id="estado-pessoa" name="estado-pessoa" required>
+                                <option value="">Selecione um estado</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Seção 2: Detalhes da Denúncia -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-clipboard-list"></i>
+                            Detalhes da Denúncia
+                        </h3>
+                        
+                        <div class="form-group">
+                            <label for="tipo" class="required">Tipo de Crime/Infração</label>
+                            <select id="tipo" name="tipo" required>
+                                <option value="">Selecione o tipo...</option>
+                                <option value="roubo">Roubo</option>
+                                <option value="furto">Furto</option>
+                                <option value="agressao">Agressão Física</option>
+                                <option value="ameaca">Ameaça</option>
+                                <option value="homicidio">Homicídio/Tentativa</option>
+                                <option value="violencia">Violência Doméstica</option>
+                                <option value="sequestro">Sequestro</option>
+                                <option value="outros">Outros Crimes</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="data" class="required">Data dos fatos</label>
+                            <input type="text" id="data" name="data" required placeholder="DD/MM/AAAA" maxlength="10">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="envolvidos">Pessoas Envolvidas (se conhecidas)</label>
+                            <input type="text" id="envolvidos" name="envolvidos" placeholder="Ex: Diretor Financeiro, Gerente de Contratos">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="descricao" class="required">Relato detalhado</label>
+                            <textarea id="descricao" name="descricao" class="auto-expand" required placeholder="Descreva com detalhes o ocorrido, incluindo situações específicas e qualquer informação relevante"></textarea>
+                            <small>Se possível, inclua valores envolvidos, documentos referenciados e impactos causados.</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Seção 3: Provas e Anexos -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-paperclip"></i>
+                            Provas e Anexos
+                        </h3>
+                        
+                        <div class="form-group">
+                            <label for="provas">Quais provas você possui?</label>
+                            <input type="text" id="provas" name="provas" placeholder="Ex: Documentos, e-mails, gravações, testemunhas">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Anexar provas (opcional)</label>
+                            <div class="file-upload">
+                                <input type="file" id="anexos" name="anexos" multiple>
+                                <label for="anexos" class="file-upload-label">
+                                    <strong>Clique para adicionar arquivos</strong> ou arraste e solte aqui<br>
+                                    (Documentos, fotos, gravações - máx. 5MB cada)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Seção 4: Visibilidade da Denúncia -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-eye"></i>
+                            Visibilidade da Denúncia
+                        </h3>
+                        
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="report-publica" name="report-publica">
+                                <label for="report-publica">Tornar esta denúncia pública</label>
+                            </div>
+                            <small>Se marcada, sua denúncia poderá ser visualizada por outros usuários do sistema (seus dados pessoais permanecerão confidenciais).</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Termos e Envio -->
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="termos" name="termos" required>
+                            <label for="termos" class="required">Li e concordo com os Termos de Uso e Política de Privacidade</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar Denúncia
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Protocolo -->
+    <div class="modal-overlay" id="protocolModal">
+        <div class="modal">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2 class="modal-title">Denúncia Registrada com Sucesso!</h2>
+                <p>Sua denúncia foi recebida and registrada em nosso sistema.</p>
+            </div>
+            
+            <div class="protocol-number" id="protocolNumber">20231105-78A9B2</div>
+            
+            <div class="modal-info">
+                <i class="fas fa-info-circle"></i>
+                <span>Anote o número do protocolo para acompanhar o andamento da sua denúncia.</span>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-primary" id="copyProtocol">
+                    <i class="fas fa-copy"></i> Copiar Protocolo
+                </button>
+                <button class="modal-btn modal-btn-secondary" id="newComplaint">
+                    Nova Denúncia
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para auto-expansão da textarea
+        function autoExpand(textarea) {
+            // Reset da altura para que possa encolher também
+            textarea.style.height = 'inherit';
+            
+            // Calcular a altura necessária
+            const computed = window.getComputedStyle(textarea);
+            const height = parseInt(computed.getPropertyValue('border-top-width'), 10) 
+                         + parseInt(computed.getPropertyValue('padding-top'), 10)
+                         + textarea.scrollHeight
+                         + parseInt(computed.getPropertyValue('padding-bottom'), 10)
+                         + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
+            
+            textarea.style.height = height + 'px';
+        }
+        
+        // Aplicar auto-expansão à textarea de descrição
+        const descricaoTextarea = document.getElementById('descricao');
+        
+        // Inicializar a altura
+        descricaoTextarea.addEventListener('input', function() {
+            autoExpand(this);
+        });
+        
+        // Ajustar na inicialização caso já tenha conteúdo
+        if (descricaoTextarea.value) {
+            autoExpand(descricaoTextarea);
+        }
+
+        // Formatar data automaticamente
+        const dataInput = document.getElementById('data');
+        
+        dataInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length > 2 && value.length <= 4) {
+                value = value.replace(/^(\d{2})(\d+)/, '$1/$2');
+            } else if (value.length > 4) {
+                value = value.replace(/^(\d{2})(\d{2})(\d+)/, '$1/$2/$3');
+            }
+            
+            // Limitar a 10 caracteres (DD/MM/AAAA)
+            if (value.length > 10) {
+                value = value.substring(0, 10);
+            }
+            
+            e.target.value = value;
+        });
+        
+        // Modal de protocolo
+        const protocolModal = document.getElementById('protocolModal');
+        const protocolNumber = document.getElementById('protocolNumber');
+        const closeModal = document.getElementById('closeModal');
+        const copyProtocol = document.getElementById('copyProtocol');
+        const newComplaint = document.getElementById('newComplaint');
+        
+        function generateProtocolNumber() {
+            const date = new Date();
+            const dateStr = date.toISOString().replace(/-/g, '').substring(0, 8);
+            const randomStr = Math.random().toString(36).substring(2, 8).toUpperCase();
+            return `${dateStr}-${randomStr}`;
+        }
+        
+        function showProtocolModal() {
+            protocolNumber.textContent = generateProtocolNumber();
+            protocolModal.classList.add('active');
+        }
+        
+        function hideProtocolModal() {
+            protocolModal.classList.remove('active');
+        }
+        
+        closeModal.addEventListener('click', hideProtocolModal);
+        
+        copyProtocol.addEventListener('click', function() {
+            navigator.clipboard.writeText(protocolNumber.textContent)
+                .then(() => {
+                    const originalText = copyProtocol.innerHTML;
+                    copyProtocol.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+                    setTimeout(() => {
+                        copyProtocol.innerHTML = originalText;
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Erro ao copiar texto: ', err);
+                });
+        });
+        
+        newComplaint.addEventListener('click', function() {
+            hideProtocolModal();
+            document.getElementById('formreportAdministrativa').reset();
+            // Resetar a altura da textarea
+            descricaoTextarea.style.height = '150px';
+        });
+        
+        // Fechar modal clicando fora dele
+        protocolModal.addEventListener('click', function(e) {
+            if (e.target === protocolModal) {
+                hideProtocolModal();
+            }
+        });
+        
+        // Validação do formulário
+        document.getElementById('formreportAdministrativa').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validar nome da pessoa
+            const nomePessoaInput = document.getElementById('nome-pessoa');
+            if (!nomePessoaInput.value) {
+                alert('Por favor, informe o nome da pessoa');
+                return;
+            }
+            
+            // Validar estado da pessoa
+            const estadoPessoaSelect = document.getElementById('estado-pessoa');
+            if (!estadoPessoaSelect.value) {
+                alert('Por favor, selecione o estado da pessoa');
+                return;
+            }
+            
+            // Validar data
+            const dataValue = dataInput.value;
+            const dataRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+            if (!dataRegex.test(dataValue)) {
+                alert('Por favor, informe uma data válida no formato DD/MM/AAAA');
+                return;
+            }
+            
+            if (!document.getElementById('termos').checked) {
+                alert('Por favor, aceite os Termos de Uso para continuar');
+                return;
+            }
+            
+            // Mostrar modal com número de protocolo
+            showProtocolModal();
+        });
+    </script>
+</body>
+</html>
